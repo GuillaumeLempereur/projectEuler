@@ -1,0 +1,2 @@
+# ignore all c++ compiled code (default name)
+**/a.out

@@ -1,0 +1,41 @@
+"""
+p186
+recursive very bf
+
+#	caller	called
+1	200007	100053
+2	600183	500439
+3	600683	701497
+
+Caller(n) = S2n-1
+Called(n) = S2n
+
+Lagged Fibonacci Generator:
+
+1 <= k <= 55: S_k = [100003 - 200003*k + 300007 *k**3]
+56 <= k, S_k = [S_k-24 + S_k-55] mod 1000000
+
+X and Z friend if
+X friend with ... friend with ... friend with Z
+friend = a : b and b : a
+
+524287
+
+n such that 99% friends of 524287
+
+S(2*n-1) = S(2*n-25) + S(2*n-56) = S(2*n-49) + S(2*n-80) + S(2*n-80) + S(2*n-111)
+S(2*n) = S(2*n-24) + S(2*n-55) = S(2*n-48) + S(2*n-79) + S(2*n-79) + S(2*n-110)
+"""
+import sys
+
+lim = int(sys.argv[1])
+
+def S(k):
+    if k <= 55:
+        return (100003 - 200003*k + 300007 *k**3) % 1000000
+    else:
+        return (S(k-24)%1000000 + S(k-55)%1000000) % 1000000
+
+for n in range(1, lim+1):
+    print("{}\t{}\t{}".format(n, S(2*n-1), S(2*n)))
+
