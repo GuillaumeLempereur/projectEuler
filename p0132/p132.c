@@ -1,12 +1,10 @@
-/*Problem 132
-
-Repunit divisibility
-
-answer is not 1000171, 1000491
+/*
+ * Problem 132
+ * Repunit divisibility
 */
 
 #include <stdio.h>
-#include "euler.h"
+#include "../euler.h"
 
 /*
 n not multiple of 10
@@ -17,21 +15,19 @@ A(n) the least value of k
 A(7) = 6 => 111111 divisible by 7
 A(41) = 5 => 11111 divisible by 41
 
-
 1%41 + 10 %41 + 10^2 %41 + 10^3 %41
 For ech 1,10,100,... there is a recurrence in the modulo, sum the recurrence until having %n = 0
-
 */
 
 int main(int args,char **argv){
 	int imax = 0;
 
-	int lim = 200000; // 10000
+	int lim = 200000;
 	int n = 6;
 	int ss = 0;
-	for(int i=0;i<lim;++i){
+	for(int ii=0;ii<lim;++ii){
 		if(imax == 40){
-			printf("Answer: %d",ss);
+			printf("Answer: %d\n",ss);
 			break;
 		}
 		n++;
@@ -57,7 +53,7 @@ int main(int args,char **argv){
                 }
 				break; // # not interesting cause R(i < 5000) is divisible by n
 			}
-			if(r == 1){ // # && i > 1){
+			if(r == 1){
 				break; //# found a reccurence
 			}
 			if(nr>2000000-2)
@@ -85,6 +81,5 @@ int main(int args,char **argv){
 		}
 
 	}
-    //print(n, s, rl)
 	return 0;
 }

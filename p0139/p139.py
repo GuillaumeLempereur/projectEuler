@@ -1,38 +1,64 @@
-import time
-import sys
+"""
+Problem 139
 
-def gcd(a,b):
-    while b > 0:
-        a, b = b, a%b
-    return a
+a,b,c the length of the triangle
+
+a+b+c is less than 10**8
+b > a
+c is the hypotenuse => a and b < c
+a**2 + b**2 = c**2
+
+we want n*(b-a) = c (b-a multiple of c)
+"""
+import sys
+sys.path.append('..')
+import Euler
+import time
+
+# Euclide's formula: list all unit pythagorian triples
+
+# a = (m**2-n**2), b = 2*m*n, c = (m**2+n**2)
+# m>n , m , n are coprime
 
 start = time.time()
 count = 0
-lim = 100 #nt(sys.argv[1])
+lim = 7071
+for m in range(1,lim+1,2): # m impair
+    for n in range(2,m,2):
+        if Euler.gcd(m,n) != 1 or (m+n)%2==0:
+            continue
 
-print(lim)
+        c = m*m+n*n
+        b = m*m-n*n
+        a = 2*m*n
+        if b < a:
+            a, b = b, a
+        p = a + b + c
+        if p >= 10**8:
+            break
 
-for m in range(2,lim): # m impair & pair
-    for n in range(1,m):
-        if gcd(m,n) == 1 and (m+n)%2==1:
+        if c%(b-a) == 0:
+            count += (10**8-1)//p
 
-            c = m*m+n*n
-            b = m*m-n*n
-            a = 2*m*n
+for m in range(2,lim,2): # m pair
+    for n in range(1,m,2):
+        if Euler.gcd(m,n) != 1:
+            continue
 
-            p = a + b + c
-            if p >= 10**8:
-                break
+        c = m*m+n*n
+        b = m*m-n*n
+        a = 2*m*n
+        if b < a:
+            a, b = b, a
 
-            if b<a:
-                t = a
-                a =b
-                b =  t
+        p = a + b + c
+        if p >= 10 ** 8:
+            break
 
-            if c%(b-a) == 0:
-                count += (10**8-1)//p
+        if c%(b-a) == 0:
+            count += (10**8-1)//p
 
 end = time.time()
 print(end-start)
 
-print(count)
+print("Ans:", count)

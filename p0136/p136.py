@@ -2,10 +2,9 @@
 """
 x, y, z = x, x-r, x-2*r
 x**2 - y**2-z**2 = x**2-
-
-Works fine but need improvement
 """
-
+import sys
+sys.path.insert(1, '..')
 import Euler
 
 lim = 50000000
@@ -36,10 +35,6 @@ for a in range(1,lim//4): # n = 4*a
         r = (a+1)//2
         d = (a-1)//2
         x1 = 2*a
-        # x2 = 2 # never solution
-        #print("n, x, r: 4*a and a prime")
-        #print(n, x1, r, x1 * (4 * r - x1))
-        #l[n] = (x1, r, n)
         cc += 1
 
     else:
@@ -48,14 +43,9 @@ for a in range(1,lim//4): # n = 4*a
             r = (a//4 + 1)
             d = (a//4 - 1)
             x1 = 4 * a//4
-            # x2 = 4 # never solution
-            #print("n, x, r: 16*a and a prime")
-            #print(n, x1, r, x1 * (4 * r - x1))
-            #l[n] = (x1, r, n)
             cc += 1
             continue
 
-# Should be OK !!!
 for a in range(1,(lim+1)//4+1): # n = 4*i -1
     n = 4*a-1
 
@@ -67,14 +57,6 @@ for a in range(1,(lim+1)//4+1): # n = 4*i -1
     d = 2*a-1
     x = 4*a-1
 
-    #print("n, x, r: 4*a-1")
-    #print(n,x,r,":",x*(4*r-x))
-    #l[n] = (x, r, n)
     cc += 1
 
-"""
-for i in l:
-    if i != 0:
-        print(i)
-"""
 print(cc)

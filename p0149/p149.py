@@ -2,9 +2,6 @@
 """
 Searching for a maximum-sum subsequence
 
-not the answer: 48519449
-answer: 52852124
-
 idea aggregate adjacent number if null restart at the next
 """
 
@@ -26,8 +23,6 @@ def s_k(k):
     return s[k]
 
 for k in range(1,4000001):
-    #print(k,s_k(k))
-
     sum += s_k(k)
 
 print(sum)
@@ -124,4 +119,4 @@ for j in range(size):
 
 print(end-start)
 
-print(maxy)
+print("Ans:", maxy)

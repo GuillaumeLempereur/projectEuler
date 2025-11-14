@@ -146,6 +146,18 @@ def extendedGcd(a,b):
 	
 	return (lastx,lasty,a)
 
+"""
+    Bézout coefficient
+    return X, Y such that X*a + Y*b = gcd(a,b)
+"""
+def BezoutCoeff(a, b, n):
+    r = extendedGcd(a,b)
+    if r == 0:
+        return 0
+    x,y,d = r
+
+    return (x*n//d,y*n//d)
+
 def equationMod(a,b,n):
 	r = extendedGcd(a,n)
 	if r == 0:

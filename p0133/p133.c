@@ -1,12 +1,10 @@
-/*Problem 133
-
-Repunit divisibility
-
-answer is not 1000171, 1000491
+/*
+ * Problem 133
+ * Repunit divisibility
 */
 
 #include <stdio.h>
-#include "euler.h"
+#include "../euler.h"
 
 /*
 n not multiple of 10
@@ -22,9 +20,6 @@ A(41) = 5 => 11111 divisible by 41
 For ech 1,10,100,... there is a recurrence in the modulo, sum the recurrence until having %n = 0
 
 11,17,41,73 <100 all divider of R(10**n)
-
-answer is not 453747698
-may be should sum every primes and substract those that divide 10^n
 */
 
 bool isOnlyMulOf2and5(int n){
@@ -40,10 +35,10 @@ bool isOnlyMulOf2and5(int n){
 int main(int args,char **argv){
 	int imax = 0;
 
-	int lim = 100000;//200000; // 10000
+	int lim = 100000;
 	int n = 1;
 	int ss = 0;
-	for(int i=0;i<lim;++i){
+	for(int ii=0;ii<lim;++ii){
 		if(imax == 40){
 			printf("Answer: %d",ss);
 			break;
@@ -59,20 +54,18 @@ int main(int args,char **argv){
 		rlst[nr++] = r;
 
 		int i=0;
-		for(i=1;i<1000000;++i){ // # 10**6 # need to speed up the finding of the recurrence !!!!
+		for(i=1;i<1000000;++i){
 			r = ((10%n)*r) % n;
 			s = (s+r)%n;
 
 			if(s == 0){
-                //printf("NOP %d %d\n",n,i);
                 if(isOnlyMulOf2and5(i)){
-                    //printf("%d %d\n",n,imax);
                     ss += n;
                 }
-				break; // # not interesting cause R(i < 5000) is divisible by n
+				break; // not interesting cause R(i < 5000) is divisible by n
 			}
-			if(r == 1){ // # && i > 1){
-				break; //# found a reccurence
+			if(r == 1){
+				break; // found a recurrence
 			}
 			if(nr>2000000-2)
 				return -2;

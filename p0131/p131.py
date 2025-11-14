@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Created on Tue Feb 21 08:56:11 2017
 
@@ -6,7 +5,8 @@ Created on Tue Feb 21 08:56:11 2017
 
 P131
 """
-
+import sys
+sys.path.insert(1, '..')
 import Euler
 # n^3 + n^2*p = a^3
 
@@ -17,25 +17,6 @@ def isCube(x):
         return True
     return False
 
-print(len(primes))
-"""
-BF
-for p in primes:
-    for n in range(1,10000):
-        x = n**3+n*n*p
-        if isCube(x):
-            print(n,p,x)
-"""
-
-"""
-Smarter
-for p in primes:
-    for n in range(1,1000):
-        v = n**3
-        x = v**3+v*v*p
-        if isCube(x):
-            print(v,p,x)
-"""
 """
 1 7 8
 8 19 1728
@@ -73,11 +54,6 @@ for a in range(1,2000):
         p = v-w
         if p >= 1000000: #1e6
             break
-        #print(v,w)
         if Euler.isprime(p):
-            #print(w,p,v)
             p_l.add(p)
-            
-print(len(p_l))
-        
-
+print("Ans:", len(p_l))
