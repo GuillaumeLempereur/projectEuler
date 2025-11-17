@@ -1,14 +1,4 @@
 #p151
-
-"""
-(1, 0, 0, 0) Prob having A2 in turn 8:
-52271 / 864000
-
-3*(52271/864000*7/36*1/2)
-+ 2*
-"""
-
-
 import math
 
 class Frac:
@@ -71,25 +61,7 @@ def pick(turn, hand, prob, nbOS):
     if a5 >0:
         pick(turn +1, (a2, a3, a4, a5-1), prob*Frac(a5,ss), nbOS)
 
-
-
-#pick(1, (1,1,1,1), Frac(1,1))
-#pick(8, (1,0, 0, 0), Frac(1,1))
-#pick(12, (0,1, 0, 0), Frac(1,1))
-#pick(12, (0,1, 0, 0), Frac(1,1))
-
 pick(1, (1,1,1,1), Frac(1,1), 0)
-#print(d)
 
-sss = Frac(0,1)
-for h in d:
-    print(h)
-    print(d[h])
-    print()
-    sss += d[h]
-
-print("Total")
-print(sss)
-
-print()
 print(nbOStot)
+print("Ans:", str(round(nbOStot.n/nbOStot.d, 6)))
