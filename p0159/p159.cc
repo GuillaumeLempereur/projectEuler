@@ -5,7 +5,7 @@
 #include <list>
 #include <tuple>
 #include <vector>
-#include "primesBelow1M.h"
+#include "../primesBelow1M.h"
 
 /*
  * p159
@@ -89,7 +89,6 @@ int main(int args, char *argv[]){
 						std::max(DRS[p2*p3]+DRS[p1], DRS[p1*p3]+DRS[p2])));
 				if(DRS[n3] > sdrs[n3]){
 					sdrs[n3] = DRS[p1*p2*p3];
-					//std::cout << p1 << "\t" << p2 << "\t" << p3 << std::endl;
 					ccc++;
 					triplets[p1][p2][p3] = true;
 				}
@@ -129,9 +128,7 @@ int main(int args, char *argv[]){
 	}
 	int c = 0;
 	for(int i=1;i<LIM;++i){
-		if(facto[i].size()>0){
-			//c++;
-		}else{
+		if(facto[i].size()==0){
 			std::vector<int> v;
 			factorize(v, i);
 			if(i==9570){
@@ -148,7 +145,6 @@ int main(int args, char *argv[]){
 				std::cout << std::endl;
 			}
 			facto[i] = v;
-			//c++;
 		}
 	}
 
@@ -204,9 +200,8 @@ int main(int args, char *argv[]){
 
 	for(int i=2;i<LIM;++i){
 		c += sdrs[i];
-		//std::cout << i << "\t" << (int)(sdrs[i]) << std::endl;
 	}
-	std::cout << c << std::endl;
+	std::cout << "Ans: " <<  c << std::endl;
 
 	return 0;
 }

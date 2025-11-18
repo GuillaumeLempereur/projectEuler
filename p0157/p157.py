@@ -1,6 +1,5 @@
 """
 p157
-seems to work for n = 1 & 2
 ans:
 2	102
 3	356
@@ -54,13 +53,11 @@ for n in range(1,lim+1):
     for d in dl:
         pLst = []
         Euler.lstDiv(pLst, 10**n-d)
-        #for p in range(1,2*10**n+1):
         for p in pLst:
             if (10**n - d) % p == 0 and ((10**n)*(d - 10**n))%(d*p) == 0:
                 x = (10**n - d)//p
                 y = (10**n) * (d - 10**n)//d//p
                 if x <= y:
-                    #print("{}\t{}\t{}\t{}".format(x, y, p, d))
                     cnt += 1
     print("{}\t{}".format(n, cnt))
     tot += cnt

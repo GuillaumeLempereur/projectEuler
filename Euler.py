@@ -111,6 +111,27 @@ def factorization(n):
 			factors[p1] = 1
 	return factors
 
+"""
+    Fill the list lst with all the divisors of n
+"""
+def lstDiv(lst, n):
+    def lstDiv_(lst, d, fs):
+        if len(fs)==0:
+            lst.append(d)
+            return
+        f = 1
+        nbMul = 1
+        for ff in fs:
+            f = ff
+            nbMul = fs[f]
+            del fs[f]
+            break
+        for i in range(nbMul+1):
+            lstDiv_(lst, d*f**i, fs.copy())
+
+    fs = factorization(n)
+    lstDiv_(lst, 1, fs)
+
 totients = {}
 def totient(n):
 	if n == 0: return 1
