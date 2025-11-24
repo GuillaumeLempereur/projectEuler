@@ -1,3 +1,6 @@
+/*
+ *	p162
+ * */
 #include <iostream>
 #include <set>
 #include <string>
@@ -24,17 +27,12 @@ long long int nbA10x(int size){
 }
 
 int main(int args, char **argv){
-	/*
-	 * Optimized solution
-	 *
-	*/
-	
 	std::cout << nbA10x(16) << std::endl;
 
 	std::stringstream stream;
 	stream << std::hex << nbA10x(16);
 	std::string result(stream.str());
 	std::transform(result.begin(), result.end(), result.begin(), ::toupper);
-	std::cout << result << std::endl;
+	std::cout <<"Ans: " << result << std::endl;
 	return 0;
 }
