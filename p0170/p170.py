@@ -25,7 +25,6 @@ mmax = 0
 def rec(l, n):
     global c, d, cc, mmax
     if len(l) == 0:
-        #print(n)
         #check
         for b_s in range(1,9):
             b = n % (10**b_s)
