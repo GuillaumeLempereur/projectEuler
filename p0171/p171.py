@@ -59,5 +59,6 @@ def r(n, digMin, d):
         comp[0] += 1
         comp[i] -= 1
 r(0, 1, 1)
-print(kk)
+#print(kk)
 print(summ)
+print("Ans: ", summ%10**9)
