@@ -20,40 +20,6 @@ f(x) + f(x+1) = 109739369       x = (n-1)//2
 
 f_m(45) = 1836311903  =>   n ~= 2**45
 
-
-"""
-"""
-Try:
-f(n) = 13717421
-f(n-1) = 109739369
-
-hypothesis: n is odd
-=> n = 2*a+1 & n-1 = 2*a
-
-f(2*a+1) = 13717421
-f(2*a) = 109739369
-
-f(2*a) = f(a) + f(a-1) = 109739369
-f(2*a+1) = f(a) = 13717421
-
-f(a-1) = 109739369 - 13717421 = 96021948
-f(a) = 13717421
-
-if a odd:
-    f(a) = f(a//2) = 13717421
-    f(a-1) = f(a//2) + f(a//2-1) = 96021948
-
-    13717421 + f(a//2-1) = 96021948
-    f(a//2-1) = 96021948 - 13717421 = 82304527
-else: #even
-    f(a) = f(a//2) + f(a//2-1) = 13717421
-    f(a-1) = f(a//2-1) = 96021948
-
-    f(a//2) + 96021948 = 13717421
-    f(a//2) = 13717421 - 96021948 = -82304527 => problem !!!!
-
-
-
 f(n) == f(n//2)
 f(n-1) == f((n-1)//2) + f((n-1)//2-1)
 
@@ -66,50 +32,82 @@ f(n-1) = f(n) + f(n//2-1)
 f(n//2-1) = f(n-1) -f(n)
 f(n//2) = f(n)
 
-rec:
+ex: n, n-1 13, 5
+n = 52 ; n even
+a = n//2 = 26
+f(a-1) = 5 (f(25) = 5)
+f(a) = 13-5 = 8  (f(26) = 8)
 
-until n is even!!
+a, a-1 = 8, 5 => a even
+b = a//2 = 13
+f(b-1) = 5   f(12)
+f(b) = 8-5 = 3   f(13)
 
-recurssive algo: a always odd
-list f(x) : x range(1,1000)
-n?
+b, b-1 = 3, 5 => odd
+c = b//2 = 6
+f(c) = f(b) = 3    f(6)
+f(c-1) = 5 - 3 = 2    f(5)
 
+c, c-1 = 3, 2 => even
+d = c//2 = 3
+f(d-1) = 2
+f(d) = 3-2 = 1
 
+d, d-1 = 1, 2 =>
+d = 3 : 11
+c       110
+b       1101
+a       11010
+n       110100
 
+f(n) = f(n//2) + f(n//2-1) even
 
+f(n) = f(n//2) odd
+f(n-1) = f(n//2) + f(n//2-1) : n odd
+f(n-1) - f(n) = f(n//2-1)
+
+f(n) = f(n//2) + f(n//2-1) even
+f(n-1) = f(n//2-1)
+f(n//2) = f(n) - f(n-1)
+
+ans: 1, n-1 zeros, end of txt
 """
-import sys
 
-def rec2(n):
-    if n <= 2:
-        return n # 1: 1, 2, 2
-    if n%2 == 1: # n odd
-        return rec2(n//2)
-    else: # n even
-        return rec2(n//2) + rec2(n//2-1)
+n, n_1 = 13717421, 109739369
+bits = []
 
-lim = 10
-for n in range(1,2**lim+1):
-    print("{}\t{}".format(n, rec2(n)))
+while 1:
+    if n_1 == 1: #n = 2**(n-1)
+        bits.append(bin(2**(n-1))[2:])
+        #print((n-1))
+        break
+    if n_1 > n: #n is odd
+        n, n_1 = n, n_1 - n
+        bits.append(1)
+    else: # n is even
+        n_1, n = n_1, n-n_1
+        bits.append(0)
+    if n == 1 and n_1 == 2:
+        bits.append(1)
+        bits.append(1)
+        break
+    if n == 2 and n_1 == 1:
+        bits.append(0)
+        bits.append(1)
+        break
+txt = ""
 
-def f_m(n):
-    if n == 4:
-        return 5
-    if n == 5:
-        return 8
-    return f_m(n-1) + f_m(n-2)
+for b in reversed(bits):
+    txt += str(b)
 
-n = int(sys.argv[1])
-
-#print(rec2(n))
-
-#print(f_m(n))
-
-
-n_1 = 8
-n_2 = 5
-for i in range(n-5):
-    n_1, n_2 = n_1 + n_2, n_1
-
-print(n_1)
-
+print("Ans: ", end="")
+curBit = txt[0]
+c = 1
+for b in txt[1:]:
+    if b == curBit:
+        c += 1
+    else:
+        print(c, end=",")
+        c = 1
+    curBit = b
+print(c)
