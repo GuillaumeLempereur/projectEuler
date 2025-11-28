@@ -1,4 +1,14 @@
-#p178
+"""
+p178
+3	34
+4	64
+5	122
+6	232
+15	80832
+20	2101752
+25	
+30	1423365002
+"""
 
 arr = [0]*40
 i = 0
@@ -30,12 +40,8 @@ for k in range(10):
 		start[k].append([0]*10)
 		end[k].append([0]*10)
 
-#lst = []
-		
 def f():
 	global arr, i, LIM, cc, start, end, nbStep
-	#print(arr[:i])
-	#lst.append(arr[:i])
 	m = min(arr[:i])
 	M = max(arr[:i])
 	if m == 0 and M == 9 and arr[0] != 0:
@@ -44,14 +50,6 @@ def f():
 	if i == LIM and arr[0] != 0:
 		end[arr[i-1]][m][M] += 1
 	
-	"""
-	st = ""
-	for h in arr[:i]:
-		st += str(h)
-	startl[arr[0]][m][M].append(st)
-	if i== 10:
-		endl[arr[i-1]][m][M].append(st)
-	"""
 	cc += 1
 	if i < LIM:
 		if arr[i-1] == 0:
@@ -73,11 +71,7 @@ def f():
 			i += 1
 			f()
 			i -= 1
-	"""
-	else:
-		arr[i] = arr[i-1]
-	"""
-	
+
 for k in range(10):
 	i = 1
 	arr[0] = k
@@ -109,8 +103,6 @@ for k in range(10):
 
 print(cc)
 
-#print(len(lst))
-
 print()
 cc = 0
 
@@ -124,37 +116,12 @@ for k in range(10):
 					M_s = 0 if m==9 else 9
 					for y in range(M_s, 10):
 						cc += end[k][l][m]*start[k+1][x][y]
-						"""
-						for h in endl[k][l][m]:
-							for j in startl[k+1][x][y]:
-								print(h+j)
-						"""
-				
 			if k>0:
 				m_f = 1 if l>0 else 10
 				for x in range(0,m_f):
 					M_s = 0 if m==9 else 9
 					for y in range(M_s, 10):
 						cc += end[k][l][m]*start[k-1][x][y]
-						"""
-						for h in endl[k][l][m]:
-							for j in startl[k-1][x][y]:
-								print(h+j)
-						"""
 
 print("nb step up to {} {}".format(LIM, nbStep))
 print("nb step up to {} {}".format(2*LIM, cc+nbStep))
-
-#wrong answer: 111752382
-
-
-"""
-3	34
-4	64
-5	122
-6	232
-15	80832
-20	2101752
-25	
-30	1423365002 (15s in c++)
-"""

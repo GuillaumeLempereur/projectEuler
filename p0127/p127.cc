@@ -1,13 +1,11 @@
+/*
+ * p127
+ * c can't be prime ! or a combination of primes but has to be f**n * f2 *f3 with n >1
+ * */
 #include <iostream>
 #include <vector>
 #include <set>
-#include "euler.h"
-
-/*
- c can't be prime ! or a combination of primes but has to be f**n * f2 *f3 with n >1
- below 510510 max 6 primes dividers
- not 17707136 '(
- * */
+#include "../euler.h"
 
 
 int primes[12000];
@@ -54,11 +52,9 @@ int main(int agrs, char **argv){
 			primes[nbp++] = i;
 		}
 	}
-	
 
 	// remove each number that doesn't have any factor at least twice
 	// seems that there are only 10000 
-
 	for(int i=1;i<lim;++i){
 		factorize(i,primes, divl[i]);
 		int rad = 1;
@@ -87,18 +83,7 @@ int main(int agrs, char **argv){
 			int b = c-a;
 			if(radl[a]*radl[b] < rad_ab){
 				if(gcd(a,b)==1 && gcd(a*b,c)==1){
-					//std::cout << a << " " << b << " " << c << " abc:" << radd(a,b,c) << " " << rad(a) << " " << rad(b) << " " << rad(c) <<std::endl;
-					
-					/*
-					if(radd(a,b,c) >= c)
-						return -9;
-					if(gcd(a,b)!=1 || gcd(b,c)!=1 || gcd(a,c)!=1)
-						return -4;
-					if(a>=b)
-						return -7;
-					*/
 					cc += c;
-					//break;
 				}
 			}
 		}
@@ -112,13 +97,13 @@ int main(int agrs, char **argv){
 				rad *= divl[i].dividers[d].first;
 		}
 		if(rad != i){
-			std::cout << "Nop"<< i << std::endl;
+			std::cout << "Issue " << i << std::endl;
 		}
 		s += rad;
 	}
 
-	std::cout << s << std::endl;
-	std::cout << cc << std::endl;
+	//std::cout << s << std::endl;
+	std::cout << "Ans: " << cc << std::endl;
 
 	return 0;
 }

@@ -1,6 +1,7 @@
 #Project Euler solutions
 p0101 : missing
-p0127: delete .py euler.c in root
+
+p0127: achieved
 p0128: missing
 p0129: missing
 p0130: achieved
@@ -40,3 +41,10 @@ p0166: achieved
 
 p0170: achieved
 p0171: achieved
+
+p0173: achieved
+
+p0175: achieved
+
+p0177: achieved
+p0178: achieved

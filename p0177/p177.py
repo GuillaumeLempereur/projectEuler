@@ -1,6 +1,5 @@
 """
 p177
-
 """
 import math
 import sys
@@ -83,4 +82,4 @@ for c_2 in range(1,178): #1 to 180-3 c_2 bigger or equal than others
                 tup = (c_2, c_1, d_2, d_1, a_2, a_1, b_2, b_1)
                 s.add(tup)
                 #print("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}".format(a_1, b_2, b_1, c_2, c_1, d_2, d_1, a_2))
-print(len(s))
+print("Ans: ", len(s))
