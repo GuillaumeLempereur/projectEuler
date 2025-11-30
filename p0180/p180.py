@@ -16,7 +16,6 @@ look for (x**n + y**n - z**n) = 0
 n = 1: x + y = z
 n = 2: Pythagore
 n = 3: x**3 + y**3 = z**3 not possible, higher degree too
-
 """
 
 import sys
@@ -67,4 +66,4 @@ for (a,b) in s:
 d = Euler.gcd(t_a, t_b)
 t_a //= d
 t_b //= d
-print(t_a+t_b)
+print("Ans ", t_a+t_b)
