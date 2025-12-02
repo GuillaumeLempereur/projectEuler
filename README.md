@@ -1,4 +1,6 @@
 #Project Euler solutions
+p0001 : achieved
+
 p0101 : missing
 
 p0127: achieved
