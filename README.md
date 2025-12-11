@@ -1,8 +1,10 @@
 #Project Euler solutions
 p0001 : achieved
-
+p0002 : achieved
 p0003 : achieved
 p0004 : achieved
+p0005 : 
+p0006 : achieved
 
 p0101 : missing
 
