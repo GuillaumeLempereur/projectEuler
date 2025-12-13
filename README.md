@@ -5,6 +5,10 @@ p0003 : achieved
 p0004 : achieved
 p0005 : 
 p0006 : achieved
+p0007 : achieved
+p0008 : achieved
+p0009 : achieved
+p0010 : achieved
 
 p0101 : missing
 
